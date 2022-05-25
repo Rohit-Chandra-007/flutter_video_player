@@ -13,8 +13,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _controller = TextEditingController();
 
   _authenticate(BuildContext context) async {
+    var phoneNumber = '+91${_controller.text}';
     final token =
-        await Magic.instance.auth.loginWithSMS(phoneNumber: _controller.text);
+        await Magic.instance.auth.loginWithSMS(phoneNumber: phoneNumber);
     debugPrint('token, $token');
     if (token.isNotEmpty) {
       /// Navigate to your home page

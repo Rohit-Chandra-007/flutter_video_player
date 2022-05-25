@@ -16,7 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.network(
-        "https://drive.google.com/uc?export=view&id=1IBjoKGfUgOHFa0onprwTtVDEsd9IsWBn");
+        //"https://drive.google.com/uc?export=view&id=1IBjoKGfUgOHFa0onprwTtVDEsd9IsWBn"
+        'https://stories-app-s3.s3.amazonaws.com/Chanel.mp4');
     _initializeVideoPlayerFuture = _controller!.initialize();
 
     _controller!.setLooping(true);
@@ -33,15 +34,15 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return AspectRatio(
-              aspectRatio: _controller!.value.aspectRatio,
+              aspectRatio: 9 / 16,
               child: VideoPlayer(_controller!),
             );
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
-      drawer: Drawer(),
+      drawer: const Drawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
